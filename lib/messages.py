@@ -39,6 +39,12 @@ class AIMessage(BaseMessage):
     tool_calls: Optional[List[ToolCall]] = None
     token_usage: Optional[TokenUsage] = None
 
+    def dict(self) -> Dict:
+        d = {"role": self.role, "content": self.content or ""}
+        if self.tool_calls:
+            d["tool_calls"] = self.tool_calls
+        return d
+
 
 AnyMessage = Union[
     SystemMessage,

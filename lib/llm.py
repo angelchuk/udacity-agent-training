@@ -1,6 +1,26 @@
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel
 from openai import OpenAI
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
+import os
 from lib.messages import (
     AnyMessage,
     TokenUsage,
@@ -21,7 +41,7 @@ class LLM:
     ):
         self.model = model
         self.temperature = temperature
-        self.client = OpenAI(api_key=api_key) if api_key else OpenAI()
+        self.client = OpenAI(api_key=api_key or os.getenv('OPENAI_API_KEY'), base_url=os.getenv('OPENAI_BASE_URL'))
         self.tools: Dict[str, Tool] = {
             tool.name: tool for tool in (tools or [])
         }
